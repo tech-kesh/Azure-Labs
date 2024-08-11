@@ -1,0 +1,14 @@
+How to expand virtual hard disks attached to a Windows virtual machinein azure ?
+
+An OS disk has a maximum capacity of 4,095 GiB. However, many operating systems are partitioned with master boot record (MBR) by default. MBR limits the usable size to 2 TiB. If you need more than 2 TiB, create and attach data disks and use them for data storage. If you need to store data on the OS disk and require the additional space, convert it to GUID Partition Table (GPT).
+
+Expand without downtime
+
+You can expand data disks without deallocating your VM. The host cache setting of your disk doesn't change whether or not you can expand a data disk without deallocating your VM.
+
+This feature has the following limitations:
+
+Only supported for data disks.
+If a disk is 4 TiB or less, you should deallocate your VM and detach the disk before expanding it beyond 4 TiB. If a disk is already greater than 4 TiB, you can expand it without deallocating the VM and detaching the disk.
+Not supported for Ultra disks or Premium SSD v2 disks.
+Not supported for shared disks.
